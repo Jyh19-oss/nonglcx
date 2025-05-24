@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>农乐创想 - 海南农副产品</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #a8edea 0%, #5ab9ea 50%, #2b7a78 100%);
+            color: #333;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: wind 60s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes wind {
+            0% { background-position: 0 0; }
+            100% { background-position: 1000px 1000px; }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #26dcd3, #77bae3);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://example.com/tropical-fruits.jpg') no-repeat center center;
+            background-size: cover;
+            filter: blur(5px);
+            z-index: -1;
+        }
+
+        .logo {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: bold;
+            color: gold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1rem;
+            animation: shine 5s infinite ease-in-out;
+            cursor: pointer;
+            transition: all 0.4s;
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(90deg, rgba(255,215,0,0.1), rgba(255,215,0,0.3), rgba(255,215,0,0.1));
+            background-size: 200% 100%;
+            border-radius: 12px;
+            border: 1px solid rgba(255,215,0,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .logo:hover {
+            animation: shine 2s infinite;
+            background: linear-gradient(90deg, rgba(255,215,0,0.2), rgba(255,215,0,0.4), rgba(255,215,0,0.2));
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 800px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .nav a {
+            margin: 0 1.5rem;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: rgba(255,255,255,0.8);
+            transition: width 0.3s;
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        .products {
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            padding: 1rem;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid #e67e22;
+            border-image: repeating-linear-gradient(45deg, #e67e22, #f1c40f 10%) 10;
+            border-radius: 8px;
+            pointer-events: none;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #6e8efb, #77e3bb);
+            padding: 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .slogan {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        @keyframes shine {
+            0%, 100% { 
+                text-shadow: 0 0 8px rgba(255,215,0,0.6), 0 0 16px rgba(255,215,0,0.4);
+                transform: scale(1) rotate(0deg);
+                background-position: 0% 50%;
+            }
+            25% { 
+                text-shadow: 0 0 12px gold, 0 0 24px rgba(255,215,0,0.7);
+                transform: scale(1.03) rotate(-0.5deg);
+                background-position: 100% 50%;
+            }
+            50% { 
+                text-shadow: 0 0 16px gold, 0 0 32px rgba(255,215,0,0.9);
+                transform: scale(1.06) rotate(0deg);
+                background-position: 0% 50%;
+            }
+            75% { 
+                text-shadow: 0 0 12px gold, 0 0 24px rgba(255,215,0,0.7);
+                transform: scale(1.03) rotate(0.5deg);
+                background-position: 100% 50%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                height: 80vh;
+                padding: 1rem;
+            }
+            
+            .nav {
+                flex-direction: column;
+                align-items: center;
+                width: 90%;
+                padding: 0.8rem;
+            }
+            
+            .nav a {
+                margin: 0.5rem 0;
+                font-size: 1.1rem;
+            }
+            
+            .products {
+                padding: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .product-card {
+                width: 90%;
+                margin-bottom: 1.5rem;
+            }
+            
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+                flex-direction: column;
+            }
+            
+            .product-detail {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .product-image {
+                width: 100%;
+                height: auto;
+                max-height: 300px;
+            }
+            
+            .product-info {
+                width: 100%;
+            }
+            
+            .footer {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                padding: 0.5rem 1rem;
+                font-size: 2.2rem;
+            }
+            
+            .modal-content {
+                padding: 1rem;
+            }
+            
+            .product-info h2 {
+                font-size: 1.6rem;
+            }
+            
+            .price {
+                font-size: 1.5rem;
+            }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+            transition: opacity 0.3s;
+            opacity: 0;
+        }
+
+        .modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 700px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transform: translateY(20px);
+            transition: all 0.3s ease-out;
+            border: 1px solid #f1c40f;
+        }
+
+        .modal.show .modal-content {
+            transform: translateY(0);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #777;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #e74c3c;
+        }
+
+        .product-detail {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .product-image {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 3px solid #f1c40f;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .product-info {
+            flex: 1;
+        }
+
+        .product-info h2 {
+            color: #e67e22;
+            margin-top: 0;
+            font-size: 2rem;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            color: #e74c3c;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .description {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .add-to-cart {
+            background: #f1c40f;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .add-to-cart:hover {
+            background: #f39c12;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+
+        .cart-icon { position: fixed; }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">农乐创想</div>
+        <div class="nav">
+            <a href="index.html">首页</a>
+            <a href="products.html">产品</a>
+            <a href="about.html">关于我们</a>
+            <a href="contact.html">联系我们</a>
+        </div>
+    </div>
+
+    <div class="products">
+        <div class="product-card">
+            <h3>金煌芒</h3>
+            <p>海南特色芒果，香甜多汁</p>
+        </div>
+        <div class="product-card">
+            <h3>贵妃芒</h3>
+            <p>海南特色芒果，果肉细腻</p>
+        </div>
+        <div class="product-card">
+            <h3>红心火龙果</h3>
+            <p>海南特色火龙果，营养丰富</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>琼岛风味，创想农乐</p>
+        <p class="slogan">琼岛风味，创想农乐</p>
+    </div>
+
+    <div class="modal" id="product-modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="product-detail">
+                <img src="https://example.com/mango.jpg" alt="金煌芒" class="product-image">
+                <div class="product-info">
+                    <h2>金煌芒</h2>
+                    <p class="price">¥28.8/斤</p>
+                    <p class="description">海南特产金煌芒，果肉厚实，甜度高，纤维少，口感细腻。</p>
+                    <a href="https://www.temu.com" 
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="add-to-cart"
+                       style="display:inline-block; padding:10px 20px; background:#e67e22; color:white; border-radius:5px; text-decoration:none; cursor:pointer;">
+                       加入购物车（跳转Temu）
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-icon">🛒</div>
+
+    <script>
+        // 增强品牌点击效果
+        const logo = document.querySelector('.logo');
+        logo.addEventListener('click', function() {
+            this.style.animation = 'none';
+            this.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                this.style.animation = 'shine 1.5s infinite';
+                this.style.transform = '';
+            }, 300);
+        });
+
+        // 增强产品弹窗功能
+        const modal = document.getElementById('product-modal');
+        const closeBtn = document.querySelector('.close-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        productCards.forEach((card, index) => {
+            card.addEventListener('click', function() {
+                // 这里可以根据index加载不同产品数据
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        closeBtn.addEventListener('click', function() {
+            modal.classList.remove('show');
+            setTimeout(() => {
+                document.body.style.overflow = 'auto';
+            }, 300);
+        });
+
+        window.addEventListener('click', function(e) {
+            if(e.target === modal) {
+                modal.classList.remove('show');
+                setTimeout(() => {
+                    document.body.style.overflow = 'auto';
+                }, 300);
+            }
+        });
+
+        // 增强移动端触摸反馈
+        document.querySelectorAll('.product-card, .logo').forEach(element => {
+            element.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.98)';
+            });
+            
+            element.addEventListener('touchend', function() {
+                this.style.transform = '';
+            });
+        });
+
+        // 防止移动端双击缩放
+        let lastTouchTime = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = Date.now();
+            if (now - lastTouchTime < 300) {
+                event.preventDefault();
+            }
+            lastTouchTime = now;
+        }, false);
+
+        // 强制跳转保障
+        document.querySelectorAll('.add-to-cart').forEach(btn => {
+            btn.onclick = function(e) {
+                e.preventDefault();
+                window.open(this.href, '_blank');
+                // 备用方案
+                setTimeout(() => {
+                    location.href = 'https://www.temu.com';
+                }, 200);
+            };
+        });
+
+        // 获取当前页面路径
+        const currentPage = location.pathname.split('/').pop();
+
+        // 为当前页面导航项添加active类
+        document.querySelectorAll('.nav a').forEach(link => {
+            if(link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html> 

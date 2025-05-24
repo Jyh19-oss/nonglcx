@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>联系我们 - 农乐创想</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f0; /* 米白背景 */
+            color: #333;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #f5f5f0, #e8d8c3); /* 浅棕渐变 */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: bold;
+            color: #8b7355; /* 深棕色 */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .logo:hover {
+            color: #d4af37; /* 金色 */
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin: 20px auto;
+            max-width: 800px;
+            border: 1px solid rgba(210, 180, 140, 0.3); /* 浅棕边框 */
+        }
+
+        .nav a {
+            margin: 0 1.5rem;
+            text-decoration: none;
+            color: #556b2f; /* 深绿色 */
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d4af37; /* 金色下划线 */
+            transition: width 0.3s;
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .contact-info {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 1rem;
+            color: #d4af37;
+        }
+
+        .map-container {
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-form {
+            grid-column: span 2;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-title {
+            font-size: 2rem;
+            color: #556b2f; /* 深绿色 */
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            color: #8b7355; /* 深棕色 */
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 0.8rem;
+            border: 1px solid #d4af37; /* 金色边框 */
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #556b2f; /* 深绿色 */
+            box-shadow: 0 0 0 2px rgba(85, 107, 47, 0.2);
+        }
+
+        .submit-btn {
+            padding: 0.8rem 1.5rem;
+            background: #d4af37; /* 金色按钮 */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #b8860b; /* 深金色 */
+            transform: translateY(-2px);
+        }
+
+        .privacy-link {
+            font-size: 0.8rem;
+            color: #8b7355;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #e8d8c3, #f5f5f0);
+            padding: 2rem 1rem;
+            text-align: center;
+            color: #8b7355;
+            position: relative;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #8b7355;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #d4af37;
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 40px;
+            height: 40px;
+            background: #d4af37;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: #b8860b;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                align-items: center;
+                width: 90%;
+            }
+
+            .nav a {
+                margin: 0.5rem 0;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .map-container {
+                height: 300px;
+            }
+
+            .footer-links {
+                gap: 1rem;
+            }
+            
+            .back-to-top {
+                bottom: 1rem;
+                right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">农乐创想</div>
+        <div class="nav">
+            <a href="index.html">首页</a>
+            <a href="products.html">产品</a>
+            <a href="about.html">关于我们</a>
+            <a href="contact.html">联系我们</a>
+        </div>
+    </div>
+
+    <div class="contact-wrapper">
+        <div class="contact-info">
+            <h2>联系方式</h2>
+            <div class="contact-item">
+                <span class="contact-icon">📍</span>
+                <span>海南省海口市美兰区海甸岛人民大道58号</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">📞</span>
+                <span>138-8888-8888</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">✉️</span>
+                <span>info@nonglechuangxiang.com</span>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <!-- 高德地图嵌入代码 -->
+            <iframe src="https://uri.amap.com/marker?position=110.335237,20.044329&name=农乐创想" width="100%" height="100%" frameborder="0"></iframe>
+        </div>
+
+        <form class="contact-form">
+            <h2 class="contact-title">在线咨询</h2>
+            <div class="form-group">
+                <label for="name">姓名</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">电话</label>
+                <input type="tel" id="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="email">邮箱</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">咨询内容</label>
+                <textarea id="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">提交</button>
+            <p class="privacy-link">提交即表示您同意我们的<a href="#">隐私政策</a></p>
+        </form>
+    </div>
+
+    <div class="footer">
+        <div class="footer-links">
+            <a href="privacy.html">隐私政策</a>
+            <a href="terms.html">服务条款</a>
+            <a href="about.html">关于我们</a>
+        </div>
+        <p class="copyright">© 2023 农乐创想 版权所有</p>
+    </div>
+
+    <div class="back-to-top" id="backToTop">↑</div>
+
+    <script>
+        // 微交互：表单输入效果
+        document.querySelectorAll('.form-group input, .form-group textarea').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentNode.querySelector('label').style.color = '#d4af37'; /* 金色 */
+            });
+
+            input.addEventListener('blur', function() {
+                this.parentNode.querySelector('label').style.color = '#8b7355'; /* 深棕色 */
+            });
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 返回顶部按钮功能
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html> 

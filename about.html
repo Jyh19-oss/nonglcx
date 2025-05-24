@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们 - 农乐创想</title>
+    <style>
+        :root {
+            --beige: #f5f5f0;
+            --light-brown: #e8d8c3;
+            --dark-green: #556b2f;
+            --gold: #d4af37;
+            --dark-gold: #b8860b;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: var(--beige);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--beige), var(--light-brown));
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: bold;
+            color: var(--dark-green);
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin: 20px auto;
+            max-width: 800px;
+            border: 1px solid rgba(210, 180, 140, 0.3);
+        }
+
+        .nav a {
+            margin: 0 1.5rem;
+            text-decoration: none;
+            color: var(--dark-green);
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--dark-green);
+            margin-bottom: 3rem;
+            font-size: 2.2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+            margin: 1rem auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .about-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            border-top: 3px solid var(--gold);
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .about-card h3 {
+            color: var(--dark-green);
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        .about-card p {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .team-section {
+            margin: 4rem 0;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .member-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--gold);
+            margin: 0 auto 1rem;
+            transition: all 0.3s;
+        }
+
+        .member-photo:hover {
+            transform: scale(1.05);
+        }
+
+        .member-name {
+            color: var(--dark-green);
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        .member-position {
+            color: var(--dark-gold);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .mission-statement {
+            background: rgba(85, 107, 47, 0.05);
+            padding: 3rem;
+            border-radius: 8px;
+            margin: 4rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .mission-statement::before {
+            content: '"';
+            font-size: 5rem;
+            color: rgba(85, 107, 47, 0.1);
+            position: absolute;
+            top: 1rem;
+            left: 2rem;
+            line-height: 1;
+        }
+
+        .mission-statement p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--dark-green);
+            font-style: italic;
+            position: relative;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, var(--light-brown), var(--beige));
+            padding: 2rem 1rem;
+            text-align: center;
+            color: var(--dark-green);
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav a {
+                margin: 0.5rem 0;
+            }
+            
+            .about-container {
+                padding: 0 1rem;
+            }
+            
+            .mission-statement {
+                padding: 2rem 1rem;
+            }
+        }
+
+        /* 新增团队弹窗样式 */
+        .team-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-green);
+        }
+
+        /* 新增荣誉资质墙样式 */
+        .certifications {
+            margin: 4rem 0;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .cert-item {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .cert-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .cert-tooltip {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            background: rgba(85, 107, 47, 0.9);
+            color: white;
+            padding: 1rem;
+            transition: all 0.3s;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .cert-item:hover .cert-tooltip {
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">农乐创想</div>
+        <div class="nav">
+            <a href="index.html">首页</a>
+            <a href="products.html">产品</a>
+            <a href="about.html">关于我们</a>
+            <a href="contact.html">联系我们</a>
+        </div>
+    </div>
+
+    <div class="about-container">
+        <h2 class="section-title">我们的故事</h2>
+        
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>品牌起源</h3>
+                <p>农乐创想成立于2015年，源于对海南优质农产品的热爱。我们致力于将海南最天然、最健康的农产品带给全国消费者，让更多人品尝到琼岛风味。</p>
+            </div>
+            
+            <div class="about-card">
+                <h3>我们的理念</h3>
+                <p>坚持"自然、健康、品质"的核心价值观，采用生态种植方式，严格把控每一个生产环节，确保从田间到餐桌的每一份产品都保持最佳品质。</p>
+            </div>
+            
+            <div class="about-card">
+                <h3>未来愿景</h3>
+                <p>打造中国领先的农产品品牌，推动海南农业现代化发展，让海南优质农产品走向世界，同时助力乡村振兴和农民增收。</p>
+            </div>
+        </div>
+        
+        <div class="mission-statement">
+            <p>我们相信，好的农产品应该保留最原始的风味和营养。农乐创想，让每一口都充满自然的味道。</p>
+        </div>
+        
+        <div class="team-section">
+            <h2 class="section-title">我们的团队</h2>
+            
+            <div class="team-grid">
+                <div class="team-member" onclick="openModal('张海南', '创始人 & CEO', '10年农业领域经验，海南大学农学博士', '热爱农业，致力于推动海南农产品走向世界')">
+                    <img src="https://example.com/team1.jpg" alt="创始人" class="member-photo">
+                    <h4 class="member-name">张海南</h4>
+                    <p class="member-position">创始人 & CEO</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://example.com/team2.jpg" alt="产品总监" class="member-photo">
+                    <h4 class="member-name">李琼岛</h4>
+                    <p class="member-position">产品总监</p>
+                    <p>专注农产品品质把控8年</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://example.com/team3.jpg" alt="市场总监" class="member-photo">
+                    <h4 class="member-name">王琼岛</h4>
+                    <p class="member-position">市场总监</p>
+                    <p>专注市场营销10年</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 新增荣誉资质墙 -->
+    <div class="certifications" style="text-align: center;">
+        <h2 class="section-title" style="margin-bottom: 2rem;">荣誉资质</h2>
+        
+        <div class="cert-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 3rem; max-width: 1200px; margin: 0 auto;">
+            <div class="cert-item" style="width: 300px; height: 300px; margin: 0;">
+                <img src="https://example.com/cert1.png" alt="有机认证" style="width: 100%; height: 100%; object-fit: contain; padding: 1rem;">
+                <div class="cert-tooltip">
+                    <h4>有机农产品认证</h4>
+                    <p>2022年获得国家有机农产品认证</p>
+                </div>
+            </div>
+            
+            <div class="cert-item" style="width: 300px; height: 300px; margin: 0;">
+                <img src="https://example.com/cert2.png" alt="绿色食品认证" style="width: 100%; height: 100%; object-fit: contain; padding: 1rem;">
+                <div class="cert-tooltip">
+                    <h4>绿色食品认证</h4>
+                    <p>2021年获得中国绿色食品发展中心认证</p>
+                </div>
+            </div>
+            
+            <div class="cert-item" style="width: 300px; height: 300px; margin: 0;">
+                <img src="https://example.com/cert3.png" alt="农业产业化重点龙头企业" style="width: 100%; height: 100%; object-fit: contain; padding: 1rem;">
+                <div class="cert-tooltip">
+                    <h4>农业产业化重点龙头企业</h4>
+                    <p>2023年被评为海南省农业产业化重点龙头企业</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 团队弹窗 -->
+    <div class="team-modal" id="teamModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h3 id="modalName"></h3>
+            <p id="modalPosition"></p>
+            <p id="modalBio"></p>
+            <p id="modalMessage"></p>
+        </div>
+    </div>
+
+    <script>
+        // 团队弹窗功能
+        function openModal(name, position, bio, message) {
+            document.getElementById('modalName').textContent = name;
+            document.getElementById('modalPosition').textContent = position;
+            document.getElementById('modalBio').textContent = bio;
+            document.getElementById('modalMessage').textContent = message;
+            document.getElementById('teamModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('teamModal').style.display = 'none';
+        }
+    </script>
+
+    <!-- 新增页脚 -->
+    <footer class="footer" style="background: linear-gradient(135deg, #e8d8c3, #f5f5f0); padding: 2rem 0; text-align: center; margin-top: 4rem;">
+        <div class="footer-content" style="max-width: 1200px; margin: 0 auto;">
+            <div class="footer-links" style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+                <a href="privacy.html" style="color: #8b7355; text-decoration: none; transition: color 0.3s;">隐私政策</a>
+                <a href="terms.html" style="color: #8b7355; text-decoration: none; transition: color 0.3s;">服务条款</a>
+                <a href="about.html" style="color: #8b7355; text-decoration: none; transition: color 0.3s;">关于我们</a>
+            </div>
+            <p style="color: #8b7355; margin: 0;">© 2023 农乐创想 版权所有</p>
+        </div>
+        
+        <!-- 返回顶部按钮 -->
+        <button id="backToTop" style="position: fixed; bottom: 2rem; right: 2rem; width: 50px; height: 50px; border-radius: 50%; background: #d4af37; color: white; border: none; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.2); display: none; transition: all 0.3s;">
+            ↑
+        </button>
+    </footer>
+
+    <script>
+        // 返回顶部功能
+        window.addEventListener('scroll', function() {
+            var backToTop = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+        
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html> 
